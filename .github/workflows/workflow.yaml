@@ -48,7 +48,9 @@ jobs:
 
 
       - name: Compile code and package artifact
-        run: mvn clean install
+        run: |
+          cd myapp
+          mvn clean install
 
       # - name: Create artifact
       #   uses: actions/upload-artifact@v2
