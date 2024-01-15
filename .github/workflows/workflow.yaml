@@ -94,7 +94,8 @@ jobs:
       - name: Download and run the docker image
         uses: addnab/docker-run-action@v3
         with:
-          # username: ${{ secrets.DOCKERHUB_USERNAME }}
-          # password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: gcr.io
           image: myapp-image:1.0.1
               
