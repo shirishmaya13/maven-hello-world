@@ -23,9 +23,8 @@ jobs:
           java-version: '11'
 
       - name: Increase Patch version
+        working-directory: ./myapp
         run: |
-          pwd
-          cd myapp
           # # Extract the current version from the pom.xml
           CURRENT_VERSION=$(xmllint --xpath "//*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
           echo $CURRENT_VERSION
@@ -48,9 +47,8 @@ jobs:
 
 
       - name: Compile code and package artifact
-        run: |
-          cd myapp
-          mvn clean install
+        working-directory: ./myapp
+        run: mvn clean install
 
       # - name: Create artifact
       #   uses: actions/upload-artifact@v2
