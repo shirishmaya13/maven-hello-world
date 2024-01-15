@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: myapp-artifact
-          path: ${{ github.workspace }}/target/myapp-*.jar
+          path: /target/myapp-*.jar
         
         # uses: actions/upload-artifact@v2
         # with:
