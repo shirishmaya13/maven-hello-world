@@ -25,18 +25,20 @@ jobs:
 
       - name: Increase Patch version
         run: |
-          CURRENT_VERSION=$(xmllint --xpath "//*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
-          echo $CURRENT_VERSION
+        pwd
+        
+        #   CURRENT_VERSION=$(xmllint --xpath "//*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
+        #   echo $CURRENT_VERSION
 
-          # Extract the patch version using awk
-          PATCH=$(echo "$CURRENT_VERSION" | awk -F. '{print $3}')
-          echo $PATCH
-          # Increase the patch version
-          NEW_PATCH=$((PATCH + 1))
-          echo $NEW_PATCH
-          # # Update the version in the pom.xml
-          # sed -i "s/<version>$CURRENT_VERSION<\/version>/<version>$MAJOR.$MINOR.$NEW_PATCH<\/version>/" pom.xml
-        shell: bash
+        #   # Extract the patch version using awk
+        #   PATCH=$(echo "$CURRENT_VERSION" | awk -F. '{print $3}')
+        #   echo $PATCH
+        #   # Increase the patch version
+        #   NEW_PATCH=$((PATCH + 1))
+        #   echo $NEW_PATCH
+        #   # # Update the version in the pom.xml
+        #   # sed -i "s/<version>$CURRENT_VERSION<\/version>/<version>$MAJOR.$MINOR.$NEW_PATCH<\/version>/" pom.xml
+        # shell: bash
 
 
       # - name: Compile code and package artifact
