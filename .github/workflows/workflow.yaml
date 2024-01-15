@@ -98,5 +98,5 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           # registry: ghcr.io
-          image: ${{ secrets.DOCKER_REPOSITORY }}/:1.0.1
+          image: ${{ secrets.DOCKER_REPOSITORY }}:1.0.1
               
