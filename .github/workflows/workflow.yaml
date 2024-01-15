@@ -40,6 +40,8 @@ jobs:
           # # Increase the patch version
           NEW_PATCH=$((PATCH + 1))
           echo $NEW_PATCH
+          NEW_JAR_VERSION={$MAJOR}.{$MINOR}.{$PATCH}
+          echo $NEW_JAR_VERSION
           
           # # # Update the version in the pom.xml
           sed -i "s/<version>$CURRENT_VERSION<\/version>/<version>$MAJOR.$MINOR.$NEW_PATCH<\/version>/" pom.xml
@@ -61,7 +63,3 @@ jobs:
           name: myapp-artifact
           path: myapp/target/*.jar
         
-        # uses: actions/upload-artifact@v2
-        # with:
-        #   name: myapp-artifact
-        #   path: target/myapp-*.jar
