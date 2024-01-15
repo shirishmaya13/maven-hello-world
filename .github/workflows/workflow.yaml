@@ -81,3 +81,8 @@ jobs:
           context: .
           push: true
           tags: shiri1122/myapp-image:${{ env.new_jar_tag }}
+
+      - name: Download and run the docker image
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/myapp-image:${{ env.new_jar_tag }}
