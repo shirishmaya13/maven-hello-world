@@ -40,7 +40,7 @@ jobs:
           # # Increase the patch version
           NEW_PATCH=$((PATCH + 1))
           echo $NEW_PATCH
-          NEW_JAR_VERSION={$MAJOR}.{$MINOR}.{$PATCH}
+          NEW_JAR_VERSION=$MAJOR.$MINOR.$PATCH
           echo $NEW_JAR_VERSION
           
           # # # Update the version in the pom.xml
