@@ -89,15 +89,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}          
 
-      - name: Checkout 
-        uses: actions/checkout@v2 
-      - uses: addnab/docker-run-action@v3
+
+      - name: Download and run the docker image
+        uses: addnab/docker-run-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           image: shiri1122/myapp-image:1.0.1
 
-      # - name: Download and run the docker image
       #   uses: addnab/docker-run-action@v3
       #   with:
       #     image: shiri1122/myapp-image:1.0.1
