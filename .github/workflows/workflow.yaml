@@ -90,8 +90,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}  
 
-
       - name: Download and run the docker image
         uses: addnab/docker-run-action@v3
         with:
-          image: shiri1122/myapp-image:1.0.1
+          tags: shiri1122/myapp-image:1.0.1
