@@ -81,6 +81,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: shiri1122/myapp-image:${NEW_JAR_VERSION}
+          tags: shiri1122/myapp-image:latest
 
         
