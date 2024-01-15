@@ -52,7 +52,7 @@ jobs:
 
       - name: List files in target directory
         working-directory: ./myapp
-        run: ls target
+        run: ls target/*.jar
 
         
       - name: Create artifact
