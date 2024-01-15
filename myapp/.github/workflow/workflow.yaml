@@ -25,7 +25,6 @@ jobs:
 
       - name: Increase Patch version
         run: |
-          # Extract the current version from the pom.xml
           CURRENT_VERSION=$(xmllint --xpath "//*[local-name()='project']/*[local-name()='version']/text()" pom.xml)
           echo $CURRENT_VERSION
 
