@@ -96,5 +96,5 @@ jobs:
         with:
           # username: ${{ secrets.DOCKERHUB_USERNAME }}
           # password: ${{ secrets.DOCKERHUB_TOKEN }}
-          image: shiri1122/myapp-image:1.0.1
+          image: myapp-image:1.0.1
               
