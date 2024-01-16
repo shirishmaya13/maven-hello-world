@@ -66,16 +66,6 @@ jobs:
           name: myapp-artifact
           path: ${{ github.workspace }}/myapp/target/*.jar
 
-
-  push:
-    runs-on: self-hosted
-    needs: build
-
-    steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Download JAR
         uses: actions/download-artifact@v3
         with:
