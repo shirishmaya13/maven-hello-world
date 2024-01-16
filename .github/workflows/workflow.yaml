@@ -69,12 +69,13 @@ jobs:
   push:
     runs-on: self-hosted
     needs: build
+    
     steps:
       - name: Download JAR
         uses: actions/download-artifact@v3
         with:
           name: myapp-artifact
-          path: myapp/target/
+          path: myapp/target
 
 
 
