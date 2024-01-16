@@ -65,6 +65,11 @@ jobs:
           name: myapp-artifact
           path: myapp/target/*.jar
 
+
+  push:
+    runs-on: self-hosted
+    
+    steps:
       - name: Download JAR
         uses: actions/download-artifact@v3
         with:
