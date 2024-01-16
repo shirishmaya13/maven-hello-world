@@ -57,8 +57,25 @@ jobs:
         with:
           name: myapp-artifact
           path: ${{ github.workspace }}/myapp/target/*.jar
+
+      - name: Create Version artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version
+          path: myapp/version.txt        
   
   # publish:
+  #   runs-on: self-hosted
+  #   needs: build
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v4
+
+  #     - name: Download JAR
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: myapp-artifact
+  #         path: ${{ github.workspace }}/myapp/target/  
 
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v3
