@@ -69,7 +69,7 @@ jobs:
       - name: Download JAR
         uses: actions/download-artifact@v3
         with:
-          name: myapp-artifact
+          # name: myapp-artifact
           path: ${{ github.workspace }}/myapp/target/
 
 
