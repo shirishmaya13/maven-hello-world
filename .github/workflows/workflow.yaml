@@ -79,7 +79,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: myapp-artifact
-          path: myapp/target
+          path: myapp/target/
 
 
 
