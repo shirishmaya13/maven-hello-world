@@ -77,16 +77,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download JAR
-        working-directory: ./myapp
-        run: |
-          pwd
-          ls -la
-        # uses: actions/download-artifact@v3
-        # with:
-        #   name: myapp-artifact
-        #   path: myapp/target/
-
-
+        uses: actions/download-artifact@v3
+        with:
+          name: myapp-artifact
+          path: myapp/target/
 
 
       # - name: Set up QEMU
