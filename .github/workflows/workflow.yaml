@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: newversion
-          path: newversion.txt
+          path: myapp/newversion.txt
 
       - name: Compile code and package artifact
         working-directory: ./myapp
