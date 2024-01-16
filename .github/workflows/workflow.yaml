@@ -76,10 +76,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download JAR
-        uses: actions/download-artifact@v3
-        with:
-          name: myapp-artifact
-          path: myapp/target/
+        working-directory: ./myapp
+        run: |
+          pwd
+          ls -la
+        # uses: actions/download-artifact@v3
+        # with:
+        #   name: myapp-artifact
+        #   path: myapp/target/
 
 
 
