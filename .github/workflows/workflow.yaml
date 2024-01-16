@@ -95,7 +95,8 @@ jobs:
       - name: Run the build process with Docker
         uses: addnab/docker-run-action@v3
         with:
-            image: shiri1122/myapp-image:1.0.1
+          registry: docker.io
+          image: shiri1122/myapp-image:1.0.1
 
 
 
