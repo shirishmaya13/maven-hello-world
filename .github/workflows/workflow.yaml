@@ -66,7 +66,11 @@ jobs:
           path: myapp/target/*.jar
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        id: qemu
+        uses: docker/setup-qemu-action@v1
+        with:
+          image: tonistiigi/binfmt:latest
+          platforms: all
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
