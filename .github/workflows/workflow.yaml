@@ -31,16 +31,12 @@ jobs:
           NEW_JAR_VERSION=$MAJOR.$MINOR.$NEW_PATCH
           # echo $NEW_JAR_VERSION
           echo "new_jar_tag=${NEW_JAR_VERSION}" >> "$GITHUB_ENV"
-          
+          echo "$new_jar_tag >> newversion.txt
 
           
           # # # Update the version in the pom.xml
           sed -i "s/<version>$CURRENT_VERSION<\/version>/<version>$MAJOR.$MINOR.$NEW_PATCH<\/version>/" pom.xml
         shell: bash
-
-      - name: Save Environment File
-        id: saveEnv
-        run: echo "new_jar_tag=${NEW_JAR_VERSION}" > newversion.txt
 
       - name: Upload Environment File
         uses: actions/upload-artifact@v2
@@ -77,14 +73,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: newversion
-          path: .
 
-      - name: Source Environment File
-        run: source newversion.txt
-
-      - name: Use Version in Job2
-        run: |
-          echo "Using version: $NEW_JAR_VERSION"
 
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@v3
