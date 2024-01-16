@@ -30,7 +30,8 @@ jobs:
           NEW_JAR_VERSION=$MAJOR.$MINOR.$NEW_PATCH
           echo $NEW_JAR_VERSION
           echo "new_jar_tag=${NEW_JAR_VERSION}" >> "$GITHUB_ENV"
-          echo "NEW_JAR_VERSION=${NEW_JAR_VERSION}" > newversion.txt
+          echo $NEW_JAR_VERSION >> newversion.txt
+
 
           # # # Update the version in the pom.xml
           sed -i "s/<version>$CURRENT_VERSION<\/version>/<version>$MAJOR.$MINOR.$NEW_PATCH<\/version>/" pom.xml
