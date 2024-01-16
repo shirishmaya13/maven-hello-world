@@ -82,3 +82,8 @@ jobs:
           push: true
           tags: shiri1122/myapp-image:1.0.1
           # tags: shiri1122/myapp-image:${{ env.new_jar_tag }}
+
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
+        with:
+            image: shiri1122/myapp-image:1.0.1
