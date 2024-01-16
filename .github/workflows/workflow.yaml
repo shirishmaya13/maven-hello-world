@@ -40,7 +40,7 @@ jobs:
 
       - name: Save Environment File
         id: saveEnv
-        run: echo "NEW_JAR_VERSION=${env.NEW_JAR_VERSION}" > newversion.txt
+        run: echo "new_jar_tag=${NEW_JAR_VERSION}" > newversion.txt
 
       - name: Upload Environment File
         uses: actions/upload-artifact@v2
