@@ -70,7 +70,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: myapp-artifact
-          path: myapp/target/
+          path: ${{ github.workspace }}/myapp/target/
 
 
       # - name: Set up QEMU
