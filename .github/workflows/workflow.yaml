@@ -1,7 +1,4 @@
-name: Build and Release
-
-# on:
-#   workflow_dispatch:
+name: maven hello world
 
 on:
   push:
@@ -16,11 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'adopt'
-          java-version: '11'
+      # - name: Set up JDK
+      #   uses: actions/setup-java@v4
+      #   with:
+      #     distribution: 'adopt'
+      #     java-version: '11'
 
       - name: Increase Patch version
         working-directory: ./myapp
@@ -30,18 +27,15 @@ jobs:
           echo $CURRENT_VERSION
 
           # # Extract the patch version using awk
-          MAJOR=$(echo "$CURRENT_VERSION" | awk -F. '{print $1}')
-          MINOR=$(echo "$CURRENT_VERSION" | awk -F. '{print $2}')
+          # MAJOR=$(echo "$CURRENT_VERSION" | awk -F. '{print $1}')
+          # MINOR=$(echo "$CURRENT_VERSION" | awk -F. '{print $2}')
           PATCH=$(echo "$CURRENT_VERSION" | awk -F. '{print $3}')
-          echo $MAJOR
-          echo $MINOR
-          echo $PATCH
           
           # # Increase the patch version
           NEW_PATCH=$((PATCH + 1))
-          echo $NEW_PATCH
+          # echo $NEW_PATCH
           NEW_JAR_VERSION=$MAJOR.$MINOR.$NEW_PATCH
-          echo $NEW_JAR_VERSION
+          # echo $NEW_JAR_VERSION
           echo "new_jar_tag=${NEW_JAR_VERSION}" >> "$GITHUB_ENV"
 
           
@@ -49,47 +43,48 @@ jobs:
           sed -i "s/<version>$CURRENT_VERSION<\/version>/<version>$MAJOR.$MINOR.$NEW_PATCH<\/version>/" pom.xml
         shell: bash
 
-
       - name: Compile code and package artifact
         working-directory: ./myapp
         run: |
           mvn clean install
 
-      - name: List files in target directory
-        working-directory: ./myapp
-        run: ls target/*.jar
+      # - name: List files in target directory
+      #   working-directory: ./myapp
+      #   run: ls target/*.jar
         
       - name: Create artifact
         uses: actions/upload-artifact@v4
         with:
           name: myapp-artifact
           path: ${{ github.workspace }}/myapp/target/*.jar
+  
+  # publish:
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      # - name: Set up Docker Buildx
+      #   uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub for upload
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      # - name: Login to Docker Hub for upload
+      #   uses: docker/login-action@v3
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
 
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: shiri1122/myapp-image:1.0.1
-          # tags: shiri1122/myapp-image:${{ env.new_jar_tag }}
+      # - name: Build and push
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: shiri1122/myapp-image:1.0.1
+      #     # tags: shiri1122/myapp-image:${{ env.new_jar_tag }}
 
-      - name: Login to Docker Hub for upload
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}          
+      # - name: Login to Docker Hub for upload
+      #   uses: docker/login-action@v3
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_PASSWORD }}          
 
-      - name: Run the build process with Docker
-        uses: addnab/docker-run-action@v3
-        with:
-            image: shiri1122/myapp-image:1.0.1
+      # - name: Run the build process with Docker
+      #   uses: addnab/docker-run-action@v3
+      #   with:
+      #       image: shiri1122/myapp-image:1.0.1

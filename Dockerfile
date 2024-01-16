@@ -7,7 +7,6 @@ WORKDIR /app
 # Copy the JAR file from the target directory to the container
 COPY /myapp/target/myapp-*.jar app.jar
 
-RUN ls -l
 # Expose the port on which your application will run (adjust as needed)
 EXPOSE 8080
 
